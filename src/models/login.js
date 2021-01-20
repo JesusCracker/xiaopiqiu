@@ -64,7 +64,7 @@ export default {
             return;
           }
         }
-        yield put(routerRedux.replace(redirect || '/app'));
+        yield put(routerRedux.replace(redirect || '/05942911891'));
       } else {
         notification.error({
           message: response.code,
@@ -94,7 +94,7 @@ export default {
       }
       yield put(
         routerRedux.push({
-          pathname: '/login',
+          pathname: '/05942911891/login',
           search: stringify({
             redirect: window.location.href,
           }),

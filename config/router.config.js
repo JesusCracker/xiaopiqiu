@@ -1,12 +1,20 @@
 export default [
 
-  // user
+  //forgot number be4 routePath;
   {
     path: '/login',
     component: '../layouts/UserLayout',
     routes: [
-      // { path: '/login', redirect: '/login' },
-      { path: '/login', component: './User/Login' },
+      { path: '/login', redirect: '/05942911891/login', },
+    ],
+  },
+  // login
+  {
+    path: '/05942911891/login',
+    component: '../layouts/UserLayout',
+    routes: [
+      // { path: '/login', redirect: '/05942911891/login', },
+      { path: '/05942911891/login', component: './User/Login' },
       { path: '/user/register', component: './User/Register' },
       { path: '/user/register-result', component: './User/RegisterResult' },
     ],
@@ -14,23 +22,23 @@ export default [
 
   // app
   {
-    path: '/app',
+    path: '/05942911891',
     component: '../layouts/BasicLayout',
     Routes: ['src/pages/Authorized'],
     // authority: ['admin', 'user'],
     routes: [
-      { path: '/app', redirect: '/app/messageManagement/announcementList' },
+      { path: '/05942911891', redirect: '/05942911891/messageManagement/announcementList' },
 
       {
         key: "5",
-        path: '/app/system',
+        path: '/05942911891/system',
         icon: 'setting',
         name: 'system',
         routes: [
           {
             key: "5-0",
             title: "用户管理",
-            path: '/app/system/userManagement',
+            path: '/05942911891/system/userManagement',
             name: 'userList',
             component: './System/UserManagementList',
             routes: [
@@ -42,7 +50,7 @@ export default [
           {
             key: "5-1",
             title: "修改密码",
-            path: '/app/system/changePWD',
+            path: '/05942911891/system/changePWD',
             name: 'changePWD',
             component: './System/ChangePWD',
             routes: [
@@ -54,12 +62,12 @@ export default [
         ],
       },
       {
-        path: '/app/appManagement',
+        path: '/05942911891/appManagement',
         icon: 'setting',
         name: 'appManagement',
         routes: [
           {
-            path: '/app/appManagement/appManagement',
+            path: '/05942911891/appManagement/appManagement',
             name: 'appList',
             component: './appManagement/AppManagementList',
             routes: [
@@ -71,12 +79,12 @@ export default [
         ],
       },
       {
-        path: '/app/redenvelopeManagement',
+        path: '/05942911891/redenvelopeManagement',
         icon: 'setting',
         name: 'redenvelopeManagement',
         routes: [
           {
-            path: '/app/redenvelopeManagement/setting',
+            path: '/05942911891/redenvelopeManagement/setting',
             name: 'setting',
             component: './redenvelopeManagement/Setting',
             routes: [
@@ -86,7 +94,7 @@ export default [
             ],
           },
           {
-            path: '/app/redenvelopeManagement/template',
+            path: '/05942911891/redenvelopeManagement/template',
             name: 'template',
             component: './redenvelopeManagement/Template',
             routes: [
@@ -96,7 +104,7 @@ export default [
             ],
           },
           {
-            path: '/app/redenvelopeManagement/activity',
+            path: '/05942911891/redenvelopeManagement/activity',
             name: 'activity',
             component: './redenvelopeManagement/Activity',
             routes: [
@@ -106,7 +114,7 @@ export default [
             ],
           },
           {
-            path: '/app/redenvelopeManagement/statistics',
+            path: '/05942911891/redenvelopeManagement/statistics',
             name: 'statistics',
             component: './redenvelopeManagement/StatisticsList',
             routes: [
@@ -119,12 +127,12 @@ export default [
         ],
       },
       {
-        path: '/app/pointsManagement',
+        path: '/05942911891/pointsManagement',
         icon: 'setting',
         name: 'pointsManagement',
         routes: [
           {
-            path: '/app/pointsManagement/setting',
+            path: '/05942911891/pointsManagement/setting',
             name: 'setting',
             component: './pointsManagement/Setting',
             routes: [
@@ -134,7 +142,7 @@ export default [
             ],
           },
           {
-            path: '/app/pointsManagement/provide',
+            path: '/05942911891/pointsManagement/provide',
             name: 'provide',
             component: './pointsManagement/Provide',
             routes: [
@@ -144,7 +152,7 @@ export default [
             ],
           },
           {
-            path: '/app/pointsManagement/trade',
+            path: '/05942911891/pointsManagement/trade',
             name: 'trade',
             component: './pointsManagement/Trade',
             routes: [
@@ -154,7 +162,7 @@ export default [
             ],
           },
           {
-            path: '/app/pointsManagement/withdraw',
+            path: '/05942911891/pointsManagement/withdraw',
             name: 'withdraw',
             component: './pointsManagement/Withdraw',
             routes: [
@@ -166,12 +174,12 @@ export default [
         ],
       },
       {
-        path: '/app/userManagement',
+        path: '/05942911891/userManagement',
         icon: 'setting',
         name: 'userManagement',
         routes: [
           {
-            path: '/app/userManagement/enterprise',
+            path: '/05942911891/userManagement/enterprise',
             name: 'enterprise',
             component: './userManagement/EnterpriseList',
             routes: [
@@ -181,7 +189,7 @@ export default [
             ],
           },
           {
-            path: '/app/userManagement/person',
+            path: '/05942911891/userManagement/person',
             name: 'person',
             component: './userManagement/PersonList',
             routes: [
@@ -191,7 +199,7 @@ export default [
             ],
           },
           {
-            path: '/app/userManagement/blacklist',
+            path: '/05942911891/userManagement/blacklist',
             name: 'blacklist',
             component: './userManagement/BlackList',
             routes: [
@@ -201,7 +209,7 @@ export default [
             ],
           },
           {
-            path: '/app/userManagement/userStatistics',
+            path: '/05942911891/userManagement/userStatistics',
             name: 'userStatistics',
             component: './userManagement/UserStatisticsList',
             routes: [
@@ -213,12 +221,12 @@ export default [
         ],
       },
       {
-        path: '/app/publishManagement',
+        path: '/05942911891/publishManagement',
         icon: 'setting',
         name: 'publishManagement',
         routes: [
           {
-            path: '/app/publishManagement/contentManagement',
+            path: '/05942911891/publishManagement/contentManagement',
             name: 'contentManagement',
             component: './publishManagement/ContentManagementList',
             routes: [
@@ -230,12 +238,12 @@ export default [
         ],
       },
       {
-        path: '/app/messageManagement',
+        path: '/05942911891/messageManagement',
         icon: 'setting',
         name: 'messageManagement',
         routes: [
           {
-            path: '/app/messageManagement/announcementList',
+            path: '/05942911891/messageManagement/announcementList',
             name: 'announcementList',
             component: './messageManagement/AnnouncementList',
             routes: [
@@ -245,7 +253,7 @@ export default [
             ],
           },
           {
-            path: '/app/messageManagement/messageList',
+            path: '/05942911891/messageManagement/messageList',
             name: 'messageList',
             component: './messageManagement/MessageList',
             routes: [

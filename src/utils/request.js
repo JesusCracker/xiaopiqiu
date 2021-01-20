@@ -127,7 +127,7 @@ request.interceptors.response.use(async (response, options) => {
 
   if (data.status !== 1) {
     if (data.message === '权限错误' && data.status === 2) {
-      router.push('/login');
+      router.push('/05942911891/login');
       // return false;
     }
 

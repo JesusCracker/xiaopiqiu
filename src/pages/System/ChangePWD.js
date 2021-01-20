@@ -50,7 +50,7 @@ class ChangePWD extends PureComponent {
           if(res.status === 1){
             message.success('修改成功，请重新登录');
             router.push({
-              pathname: '/login',
+              pathname: '/05942911891/login',
             });
           }
         });
