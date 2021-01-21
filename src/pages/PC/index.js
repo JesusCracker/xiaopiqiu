@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import { Layout, Row, Col, Carousel, message } from 'antd';
 import styles from './index.less';
 import Bmap from '../../utils/Bmap.js';
-import scar from '../../assets/PC/scar.png';
-import red from '../../assets/PC/red.png';
-import task from '../../assets/PC/task.png';
+import scar from '../../assets/PC/邀好友.png';
+import red from '../../assets/PC/领积分.png';
+import task from '../../assets/PC/抢红包.png';
 import android from '../../assets/PC/android.png';
 import 公众号 from '../../assets/PC/gzh.jpg';
 import 头条 from '../../assets/PC/tt.png';
@@ -71,9 +71,7 @@ class PC extends PureComponent {
   render() {
     const { pos, dotPosition } = this.state;
     return (
-
       <div onWheel={e => this.handleScroll(e)}>
-
         <Carousel
           effect="fade"
           dotPosition={dotPosition}

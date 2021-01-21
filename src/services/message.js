@@ -11,6 +11,16 @@ export async function queryMessageList(params) {
   });
 }
 
+//删除公告
+export async function remove(params) {
+  return request(`/api/websiteAnnouncement/remove`, {
+    method: 'POST',
+    body: {
+      id:params
+    },
+  });
+}
+
 //发布
 export async function publish(params) {
   return request(`/api/websiteAnnouncement/update`, {

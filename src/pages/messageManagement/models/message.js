@@ -1,4 +1,4 @@
-import { queryMessageList, publish,saveAnnounce,queryMsgList,saveMessage } from '@/services/message';
+import { queryMessageList, publish,saveAnnounce,queryMsgList,saveMessage,remove } from '@/services/message';
 
 export default {
   namespace: 'message',
@@ -36,6 +36,9 @@ export default {
       return yield call(publish, payload);
     },
 
+    * removedById({ payload }, { call }) {
+      return yield call(remove, payload);
+    },
 
   },
 

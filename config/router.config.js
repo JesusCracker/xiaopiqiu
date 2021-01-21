@@ -2,10 +2,10 @@ export default [
 
   //forgot number be4 routePath;
   {
-    path: '/login',
+    path: '/be4index',
     component: '../layouts/UserLayout',
     routes: [
-      { path: '/login', redirect: '/05942911891/login', },
+      { path: '/be4index', redirect: '/05942911891/login', },
     ],
   },
   // login

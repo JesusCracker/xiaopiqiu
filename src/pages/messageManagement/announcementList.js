@@ -63,7 +63,15 @@ class CreateForm extends React.Component {
           )}
         </FormItem>
         <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="公告内容">
-          {form.getFieldDecorator('comment', {})(<TextArea placeholder="请输入" />)}
+          {form.getFieldDecorator('comment', {})(<TextArea
+            placeholder="请输入"
+            maxLength={200}
+            style={{
+              width: '100%',
+              resize: 'none',
+            }}
+            rows={5}
+          />)}
         </FormItem>
       </Modal>
     );
@@ -100,6 +108,7 @@ class UpdateForm extends PureComponent {
       values,
       form,
       loading,
+      updateType,
     } = this.props;
 
     const { id, type, title, comment } = values;
@@ -120,7 +129,7 @@ class UpdateForm extends PureComponent {
         width={640}
         bodyStyle={{ padding: '32px 40px 48px' }}
         destroyOnClose
-        title="编辑角色"
+        title={updateType&&updateType===2?"编辑公告":'查看公告'}
         visible={updateModalVisible}
         onOk={okHandle}
         onCancel={() => handleUpdateModalVisible(false, values)}
@@ -128,6 +137,13 @@ class UpdateForm extends PureComponent {
         okText="确定"
         cancelText="取消"
         confirmLoading={loading}
+        footer={
+          // 设置footer为空，去掉 取消 确定默认按钮
+          updateType&&updateType===2?[
+            <Button key="back" onClick={() => handleUpdateModalVisible(false, values,updateType)}>取消</Button>,
+            <Button key="submit" type="primary" loading={loading} onClick={okHandle}>确定</Button>,
+          ]:[]
+        }
       >
         <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="公告标题">
           {form.getFieldDecorator('title', {
@@ -143,11 +159,20 @@ class UpdateForm extends PureComponent {
             <Radio.Group>
               <Radio value={1}>企业</Radio>
               <Radio value={2}>个人</Radio>
+              <Radio value={3}>全部</Radio>
             </Radio.Group>,
           )}
         </FormItem>
         <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="公告内容">
-          {form.getFieldDecorator('comment', { initialValue: comment })(<TextArea placeholder="请输入" />)}
+          {form.getFieldDecorator('comment', { initialValue: comment })(<TextArea
+            maxLength={200}
+            style={{
+              width: '100%',
+              resize: 'none',
+            }}
+            rows={5}
+            placeholder="请输入"
+          />)}
         </FormItem>
       </Modal>
     );
@@ -187,9 +212,9 @@ class AnnouncementList extends PureComponent {
             maxWidth: 150,
             overflow: 'hidden',
             whiteSpace: 'nowrap',
-            textOverflow:'ellipsis',
-            cursor:'pointer'
-          }
+            textOverflow: 'ellipsis',
+            cursor: 'pointer',
+          },
         }),
       },
       {
@@ -202,9 +227,9 @@ class AnnouncementList extends PureComponent {
             maxWidth: 150,
             overflow: 'hidden',
             whiteSpace: 'nowrap',
-            textOverflow:'ellipsis',
-            cursor:'pointer'
-          }
+            textOverflow: 'ellipsis',
+            cursor: 'pointer',
+          },
         }),
       },
       {
@@ -231,13 +256,25 @@ class AnnouncementList extends PureComponent {
       {
         title: '操作',
         align: 'center',
-        render: (text, record) => (
-          <Wrapper>
-            <a onClick={() => this.handleUpdateModalVisible(true, record)} style={{ display: record.status===1 ? 'none' : 'inline-block' }}>修改</a>
-            &nbsp;&nbsp;
-            <a onClick={() => this.handlePublishConfirm(record)}>发布</a>
-          </Wrapper>
-        ),
+        render: (text, record) => {
+          if (record.status === 2) {
+            return (
+              <Wrapper>
+                <a onClick={() => this.handleUpdateModalVisible(true, record, record.status)}>修改</a>
+                &nbsp;&nbsp;
+                <a onClick={() => this.handlePublishConfirm(record)}>发布</a>
+              </Wrapper>
+            );
+          }
+          return (
+            <Wrapper>
+              <a onClick={() => this.handleUpdateModalVisible(true, record, record.status)}>查看</a>
+              &nbsp;&nbsp;
+              <a onClick={() => this.handlePublishRemoved(record)}>删除</a>
+            </Wrapper>
+          );
+
+        },
       },
     ];
 
@@ -246,6 +283,7 @@ class AnnouncementList extends PureComponent {
       modalVisible: false,
       updateModalVisible: false,
       updateFormValues: {},
+      updateType:null,
       params: {
         page: 1,
         limit: 10,
@@ -265,17 +303,18 @@ class AnnouncementList extends PureComponent {
 
   }
 
-  handleUpdateModalVisible = (flag, record) => {
+  handleUpdateModalVisible = (flag, record, modalType) => {
     this.setState({
       updateModalVisible: !!flag,
       updateFormValues: record || {},
+      updateType: modalType,
     });
   };
 
   handleUpdate = (fields, id, form) => {
     const { dispatch } = this.props;
     const params = { ...fields, id };
-    const { params: { limit,page } } = this.state;
+    const { params: { limit, page } } = this.state;
     dispatch({
       type: 'message/save',
       payload: { ...params },
@@ -301,6 +340,39 @@ class AnnouncementList extends PureComponent {
       onOk: () => {
         this.handlePublish(record);
       },
+    });
+  };
+
+
+  handlePublishRemoved = record => {
+    Modal.confirm({
+      title: '确定删除该公告吗？',
+      okText: '确认',
+      cancelText: '取消',
+      onOk: () => {
+        this.handleRemoved(record);
+      },
+    });
+  };
+
+
+  handleRemoved = record => {
+    const { dispatch } = this.props;
+    const { id } = record;
+    const { params: { limit, page }, type } = this.state;
+    dispatch({
+      type: 'message/removedById',
+      payload: id,
+    }).then(res => {
+      if (res && res.status === 1 && res.message === '成功') {
+        message.success('删除成功');
+        dispatch({
+          type: 'message/fetch',
+          payload: { page, limit, type },
+        });
+      } else {
+        message.error('删除失败');
+      }
     });
   };
 
@@ -469,7 +541,7 @@ class AnnouncementList extends PureComponent {
   render() {
     const { message: { messageList }, loading } = this.props;
     const { data, dataTotal } = messageList;
-    const { params, modalVisible, updateModalVisible, updateFormValues } = this.state;
+    const { params, modalVisible, updateModalVisible, updateFormValues,updateType } = this.state;
 
     const parentMethods = {
       handleAdd: this.handleAdd,
@@ -514,6 +586,7 @@ class AnnouncementList extends PureComponent {
           updateModalVisible={updateModalVisible}
           values={updateFormValues}
           loading={loading}
+          updateType={updateType}
         />
       </PageHeaderWrapper>
     );
