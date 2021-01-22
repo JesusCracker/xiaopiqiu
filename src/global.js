@@ -53,6 +53,16 @@ export const treeData = [
     ],
   },
   {
+    title: '任务管理',
+    name: 'taskManagement',
+    key: '6',
+    path: './05942911891/taskManagement',
+    icon: 'container',
+    children: [
+      { title: '任务管理', key: '6-0', path: './05942911891/taskManagement/task', name: 'task', icon: 'table' },
+    ],
+  },
+  {
     title: '红包管理',
     name: 'redenvelopeManagement',
     key: '3',

@@ -117,6 +117,9 @@ export default {
   'menu.pointsManagement.provide': '交易记录',
   'menu.pointsManagement.trade': '交易类型',
   'menu.pointsManagement.withdraw': '交易统计',
+  'menu.taskManagement': '任务管理',
+  'menu.taskManagement.task': '任务管理',
+
   'menu.userManagement': '用户管理',
   'menu.userManagement.enterprise': '企业用户',
   'menu.userManagement.person': '个人用户',

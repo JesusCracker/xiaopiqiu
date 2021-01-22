@@ -5,7 +5,7 @@ export default [
     path: '/be4index',
     component: '../layouts/UserLayout',
     routes: [
-      { path: '/be4index', redirect: '/05942911891/login', },
+      { path: '/be4index', redirect: '/05942911891/login' },
     ],
   },
   // login
@@ -30,35 +30,50 @@ export default [
       { path: '/05942911891', redirect: '/05942911891/messageManagement/announcementList' },
 
       {
-        key: "5",
+        key: '6',
+        path: '/05942911891/taskManagement',
+        icon: 'container',
+        name: 'task',
+        routes: [
+          {
+            key: '6-0',
+            title: '任务管理',
+            path: '/05942911891/taskManagement/task',
+            name: 'task',
+            component: './taskManagement/Task',
+            routes: [
+              {},
+            ],
+          },
+        ],
+      },
+
+      {
+        key: '5',
         path: '/05942911891/system',
         icon: 'setting',
         name: 'system',
         routes: [
           {
-            key: "5-0",
-            title: "用户管理",
+            key: '5-0',
+            title: '用户管理',
             path: '/05942911891/system/userManagement',
             name: 'userList',
             component: './System/UserManagementList',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
-            key: "5-1",
-            title: "修改密码",
+            key: '5-1',
+            title: '修改密码',
             path: '/05942911891/system/changePWD',
             name: 'changePWD',
             component: './System/ChangePWD',
             routes: [
-              {
-
-              },
+              {},
             ],
-          }
+          },
         ],
       },
       {
@@ -71,11 +86,9 @@ export default [
             name: 'appList',
             component: './appManagement/AppManagementList',
             routes: [
-              {
-
-              },
+              {},
             ],
-          }
+          },
         ],
       },
       {
@@ -88,9 +101,7 @@ export default [
             name: 'setting',
             component: './redenvelopeManagement/Setting',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -98,9 +109,7 @@ export default [
             name: 'template',
             component: './redenvelopeManagement/Template',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -108,9 +117,7 @@ export default [
             name: 'activity',
             component: './redenvelopeManagement/Activity',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -118,11 +125,9 @@ export default [
             name: 'statistics',
             component: './redenvelopeManagement/StatisticsList',
             routes: [
-              {
-
-              },
+              {},
             ],
-          }
+          },
 
         ],
       },
@@ -136,9 +141,7 @@ export default [
             name: 'setting',
             component: './pointsManagement/Setting',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -146,9 +149,7 @@ export default [
             name: 'provide',
             component: './pointsManagement/Provide',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -156,9 +157,7 @@ export default [
             name: 'trade',
             component: './pointsManagement/Trade',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -166,11 +165,9 @@ export default [
             name: 'withdraw',
             component: './pointsManagement/Withdraw',
             routes: [
-              {
-
-              },
+              {},
             ],
-          }
+          },
         ],
       },
       {
@@ -183,9 +180,7 @@ export default [
             name: 'enterprise',
             component: './userManagement/EnterpriseList',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -193,9 +188,7 @@ export default [
             name: 'person',
             component: './userManagement/PersonList',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -203,9 +196,7 @@ export default [
             name: 'blacklist',
             component: './userManagement/BlackList',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -213,11 +204,9 @@ export default [
             name: 'userStatistics',
             component: './userManagement/UserStatisticsList',
             routes: [
-              {
-
-              },
+              {},
             ],
-          }
+          },
         ],
       },
       {
@@ -230,11 +219,9 @@ export default [
             name: 'contentManagement',
             component: './publishManagement/ContentManagementList',
             routes: [
-              {
-
-              },
+              {},
             ],
-          }
+          },
         ],
       },
       {
@@ -247,9 +234,7 @@ export default [
             name: 'announcementList',
             component: './messageManagement/AnnouncementList',
             routes: [
-              {
-
-              },
+              {},
             ],
           },
           {
@@ -257,11 +242,9 @@ export default [
             name: 'messageList',
             component: './messageManagement/MessageList',
             routes: [
-              {
-
-              },
+              {},
             ],
-          }
+          },
         ],
       },
       {
