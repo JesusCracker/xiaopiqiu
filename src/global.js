@@ -1,7 +1,6 @@
 export const imgUrlPath = 'http://www.aisono.cn/aisonofile/';
 export const identImagePath = 'http://www.xiaopiqiu.net:8090';
 
-//localData
 export const treeData = [
   {
     title: '消息管理',
