@@ -1,4 +1,4 @@
-export const imgUrlPath = 'http://www.aisono.cn/aisonofile/';
+export const imgUrlPath = 'http://www.xiaopiqiu.net/file_upload/';
 export const identImagePath = 'http://www.xiaopiqiu.net:8090';
 
 export const treeData = [
@@ -69,7 +69,7 @@ export const treeData = [
     icon: 'mail',
     children: [
       { title: '红包设置', key: '3-0', path: './05942911891/redenvelopeManagement/setting', name: 'setting', icon: 'setting' },
-      { title: '红包模板', key: '3-1', path: './05942911891/redenvelopeManagement/template', name: 'template', icon: 'foldr-open' },
+      { title: '红包模板', key: '3-1', path: './05942911891/redenvelopeManagement/template', name: 'template', icon: 'file-markdown' },
       {
         title: '红包活动',
         key: '3-2',
