@@ -40,4 +40,20 @@ export async function publishTemplate(params) {
   });
 }
 
+// 获取红包支付方式
+export async function queryPaySetting() {
+  return request(`/api/sysProperties/all`, {
+    method: 'POST',
+  });
+}
 
+
+// 设置红包支付方式
+export async function setPayWay(params) {
+  return request(`/api/sysProperties/edit`, {
+    method: 'POST',
+    body: {
+      ...params,
+    },
+  });
+}
