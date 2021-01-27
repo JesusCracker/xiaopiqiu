@@ -23,6 +23,16 @@ export async function accountLogout() {
 }
 
 
+//上传文件
+export async function uploadFiles(params) {
+  return request(`/api/file/upload`, {
+    method: 'POST',
+    body: {
+      file:params.file,
+    },
+  });
+}
+
 
 export async function queryProjectNotice() {
   return request('/api/project/notice');
