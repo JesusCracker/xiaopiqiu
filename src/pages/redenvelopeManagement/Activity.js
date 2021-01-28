@@ -332,7 +332,7 @@ class Activity extends PureComponent {
       },
     ];
     this.state = {
-      title: null,
+      activityName: null,
       modalVisible: false,
       updateFormValues: {},
       updateType: null,
@@ -346,10 +346,10 @@ class Activity extends PureComponent {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    const { params, title } = this.state;
+    const { params, activityName } = this.state;
     dispatch({
       type: 'activity/fetch',
-      payload: { ...params, title },
+      payload: { ...params, activityName },
     });
   }
 
@@ -369,7 +369,7 @@ class Activity extends PureComponent {
   };
 
   handleTableChange = (current) => {
-    const { params, title } = this.state;
+    const { params, activityName } = this.state;
     const { dispatch } = this.props;
     this.setState({
       params: {
@@ -380,16 +380,16 @@ class Activity extends PureComponent {
     const newParams = {
       page: current,
       limit: params.limit,
-      title,
+      activityName,
     };
     dispatch({
       type: 'activity/fetch',
-      payload: { ...newParams, title },
+      payload: { ...newParams, activityName },
     });
   };
 
   handleTableChangePageSize = (current, pageSize) => {
-    const { params, title } = this.state;
+    const { params, activityName } = this.state;
     const { dispatch } = this.props;
     this.setState({
       params: {
@@ -399,11 +399,11 @@ class Activity extends PureComponent {
     const newParams = {
       page: params.page,
       limit: pageSize,
-      title,
+      activityName,
     };
     dispatch({
       type: 'activity/fetch',
-      payload: { ...newParams, title },
+      payload: { ...newParams, activityName },
     });
   };
 
@@ -464,7 +464,7 @@ class Activity extends PureComponent {
         <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
           <Col md={6} sm={24}>
             <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="活动名称">
-              {getFieldDecorator('title')(<Input placeholder="活动名称" />)}
+              {getFieldDecorator('activityName')(<Input placeholder="活动名称" />)}
             </FormItem>
           </Col>
           <Col md={4} sm={24}>
