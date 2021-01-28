@@ -76,6 +76,7 @@ class UpdateForm extends PureComponent {
       if (Array.isArray(data)) {
         return data.map(item => item.children
           ? {
+            disabled:true,
             title: item.title,
             level: item.level,
             value: item.key,
@@ -231,6 +232,7 @@ class CreateForm extends React.Component {
       if (Array.isArray(data)) {
         return data.map(item => item.children
           ? {
+            disabled:true,
             title: item.title,
             level: item.level,
             value: item.key,
