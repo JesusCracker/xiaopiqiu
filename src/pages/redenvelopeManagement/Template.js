@@ -5,7 +5,6 @@ import { Button, Card, Col, Form, Input, message, Modal, Row, Select, Table, Rad
 import { Wrapper } from '@/utils/utils';
 import { imgUrlPath } from '@/global';
 import styles from './template.less';
-import { log } from 'lodash-decorators/utils';
 
 const { TextArea } = Input;
 const FormItem = Form.Item;
@@ -328,7 +327,6 @@ class UpdateForm extends PureComponent {
           handleImageUrl(image)
         }*/
     const { imageLoading, fileList } = this.state;
-    console.dir(imageURL);
 
     const handleUpload = (info) => {
       const formData = new FormData();
@@ -1024,6 +1022,7 @@ class Template extends PureComponent {
               columns={this.columns}
               rowKey={result => result.id}
               pagination={paginationProps}
+              scroll={{ x: 'max-content' }}
             />
           </div>
         </Card>

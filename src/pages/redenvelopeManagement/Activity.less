@@ -1,0 +1,120 @@
+@import '~antd/lib/style/themes/default.less';
+@import '~@/utils/utils.less';
+
+.tableList {
+  .tableListOperator {
+    margin-bottom: 16px;
+    button {
+      margin-right: 8px;
+    }
+  }
+  .show{
+    display: block;
+  }
+  .hide{
+    display: none;
+  }
+}
+.container{
+  .show{
+    display: block;
+  }
+  .hide{
+    display: none;
+  }
+
+  .title{
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    color: #000000;
+    font-size: 24px;
+  }
+  .menu{
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #000000;
+    border-bottom: none;
+  }
+  .progress{
+    margin-top: 10px;
+    text-align: center;
+    color: #000000;
+  }
+  .inner{
+    border:1px solid #b4b4b4;
+    height: 300px;
+    margin-top: 20px;
+  }
+  .rule{
+    margin-top: 10px;
+  }
+  .rule1{
+    margin-top: 30px;
+  }
+  .ruleBox{
+    height: 120px;
+    border:1px solid #b4b4b4;
+  }
+  .applyScore{
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #000000;
+    font-size: 18px;
+  }
+
+}
+
+.tableListForm {
+  :global {
+    .ant-form-item {
+      display: flex;
+      margin-right: 0;
+      margin-bottom: 24px;
+      > .ant-form-item-label {
+        width: auto;
+        padding-right: 8px;
+        line-height: 32px;
+      }
+      .ant-form-item-control {
+        line-height: 32px;
+      }
+    }
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+  .submitButtons {
+    display: block;
+    margin-bottom: 24px;
+    white-space: nowrap;
+    float: right;
+  }
+}
+.overFlowHidden {
+  word-break: keep-all;
+  max-width: 250px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: @screen-lg) {
+  .tableListForm :global(.ant-form-item) {
+    margin-right: 24px;
+  }
+}
+
+@media screen and (max-width: @screen-md) {
+  .tableListForm :global(.ant-form-item) {
+    margin-right: 8px;
+  }
+}
+.menuTable tr td:first-child{
+  text-align: left !important;
+}
+
+.setDistance{
+  margin-bottom: 10px;
+}

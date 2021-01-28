@@ -57,3 +57,14 @@ export async function setPayWay(params) {
     },
   });
 }
+
+//获取红包活动列表
+export async function queryActivityList(params) {
+  return request(`/api/hongbaoActivity/list`, {
+    method: 'POST',
+    body: {
+      ...params,
+    },
+  });
+}
+

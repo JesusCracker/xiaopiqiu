@@ -250,6 +250,7 @@ class AnnouncementList extends PureComponent {
         title: '状态',
         dataIndex: 'status',
         key: 'status',
+        align: 'center',
         render: val => <span>{this.getStatusStringByKeys(val)}</span>,
       },
 
