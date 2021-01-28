@@ -3,8 +3,11 @@ import { connect } from 'dva';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import { Button, Card, Col, Form, Input, message, Modal, Row, Select, Table, Radio, Upload, Icon } from 'antd';
 import { Wrapper } from '@/utils/utils';
+import BraftEditor from 'braft-editor';
 import { imgUrlPath } from '@/global';
 import styles from './template.less';
+// 引入编辑器样式
+import 'braft-editor/dist/index.css';
 
 const { TextArea } = Input;
 const FormItem = Form.Item;
@@ -101,11 +104,13 @@ class CreateForm extends React.Component {
       fileList,
 
     };
+    const controls = ['bold', 'italic', 'underline', 'text-color', 'separator', 'link', 'separator', 'media' ]
 
     const okHandle = () => {
 
       form.validateFields((err, fieldsValue) => {
         if (err) return;
+
         handleAdd(fieldsValue, form, imageURL);
       });
     };
@@ -255,24 +260,57 @@ class CreateForm extends React.Component {
         <Card title="红包详情介绍">
           <Row type="flex">
             <Col xl={24} lg={24} md={24} sm={24} xs={24}>
+
               <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="详细描述">
                 {form.getFieldDecorator('detailDescription', {
-                  rules: [{ required: true, message: '请输入详细描述' }],
-                })(<TextArea placeholder="详细描述" autoSize={{ minRows: 3 }} />)}
+                  rules: [{
+                    required: true,
+                    message: '请输入详细描述',
+                  }],
+                })(
+                  <BraftEditor
+                    className={styles.myEditor}
+                    controls={controls}
+                    placeholder="请输入详细描述"
+                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                  />,
+                )}
               </FormItem>
             </Col>
             <Col xl={24} lg={24} md={24} sm={24} xs={24}>
+
               <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="赠送方式介绍">
                 {form.getFieldDecorator('giveIntroduction', {
-                  rules: [{ required: true, message: '请输入赠送方式介绍' }],
-                })(<TextArea placeholder="赠送方式介绍" autoSize={{ minRows: 3 }} />)}
+                  rules: [{
+                    required: true,
+                    message: '请输入赠送方式介绍',
+                  }],
+                })(
+                  <BraftEditor
+                    className={styles.myEditor}
+                    controls={controls}
+                    placeholder="请输入赠送方式介绍"
+                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                  />,
+                )}
               </FormItem>
             </Col>
             <Col xl={24} lg={24} md={24} sm={24} xs={24}>
+
               <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="发放方式介绍">
                 {form.getFieldDecorator('sendIntroduction', {
-                  rules: [{ required: true, message: '请输入发放方式介绍' }],
-                })(<TextArea placeholder="发放方式介绍" autoSize={{ minRows: 3 }} />)}
+                  rules: [{
+                    required: true,
+                    message: '请输入发放方式介绍',
+                  }],
+                })(
+                  <BraftEditor
+                    className={styles.myEditor}
+                    controls={controls}
+                    placeholder="请输入发放方式介绍"
+                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                  />,
+                )}
               </FormItem>
             </Col>
           </Row>
@@ -327,6 +365,8 @@ class UpdateForm extends PureComponent {
           handleImageUrl(image)
         }*/
     const { imageLoading, fileList } = this.state;
+
+    const controls = ['bold', 'italic', 'underline', 'text-color', 'separator', 'link', 'separator', 'media' ]
 
     const handleUpload = (info) => {
       const formData = new FormData();
@@ -575,25 +615,55 @@ class UpdateForm extends PureComponent {
             <Col xl={24} lg={24} md={24} sm={24} xs={24}>
               <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="详细描述">
                 {form.getFieldDecorator('detailDescription', {
-                  initialValue: detailDescription,
-                  rules: [{ required: true, message: '请输入详细描述' }],
-                })(<TextArea placeholder="详细描述" autoSize={{ minRows: 3 }} />)}
+                  initialValue: BraftEditor.createEditorState(detailDescription),
+                  rules: [{
+                    required: true,
+                    message: '请输入详细描述',
+                  }],
+                })(
+                  <BraftEditor
+                    className={styles.myEditor}
+                    controls={controls}
+                    placeholder="请输入详细描述"
+                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                  />,
+                )}
               </FormItem>
             </Col>
             <Col xl={24} lg={24} md={24} sm={24} xs={24}>
               <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="赠送方式介绍">
                 {form.getFieldDecorator('giveIntroduction', {
-                  initialValue: giveIntroduction,
-                  rules: [{ required: true, message: '请输入赠送方式介绍' }],
-                })(<TextArea placeholder="赠送方式介绍" autoSize={{ minRows: 3 }} />)}
+                  initialValue: BraftEditor.createEditorState(giveIntroduction),
+                  rules: [{
+                    required: true,
+                    message: '请输入赠送方式介绍',
+                  }],
+                })(
+                  <BraftEditor
+                    className={styles.myEditor}
+                    controls={controls}
+                    placeholder="请输入赠送方式介绍"
+                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                  />,
+                )}
               </FormItem>
             </Col>
             <Col xl={24} lg={24} md={24} sm={24} xs={24}>
               <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="发放方式介绍">
                 {form.getFieldDecorator('sendIntroduction', {
-                  initialValue: sendIntroduction,
-                  rules: [{ required: true, message: '请输入发放方式介绍' }],
-                })(<TextArea placeholder="发放方式介绍" autoSize={{ minRows: 3 }} />)}
+                  initialValue: BraftEditor.createEditorState(sendIntroduction),
+                  rules: [{
+                    required: true,
+                    message: '请输入发放方式介绍',
+                  }],
+                })(
+                  <BraftEditor
+                    className={styles.myEditor}
+                    controls={controls}
+                    placeholder="请输入发放方式介绍"
+                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                  />,
+                )}
               </FormItem>
             </Col>
           </Row>
@@ -934,6 +1004,9 @@ class Template extends PureComponent {
     } else {
       newParams.image = '';
     }
+    newParams.detailDescription=newParams.detailDescription.toHTML();
+    newParams.giveIntroduction=newParams.giveIntroduction.toHTML();
+    newParams.sendIntroduction=newParams.sendIntroduction.toHTML();
     dispatch({
       type: 'template/saveTemp',
       payload: newParams,
