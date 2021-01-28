@@ -131,14 +131,14 @@ class CreateForm extends React.Component {
         cancelText="取消"
         confirmLoading={loading}
       >
-        <Card title="企业基本信息">
+        <Card title="红包基本信息">
           <Row type="flex">
             <Col span={12} className={styles.setDistance}>
-              <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="任务名称">
+              <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="红包标题">
                 {form.getFieldDecorator('title', {
-                  rules: [{ required: true, message: '请输入任务名称' }],
+                  rules: [{ required: true, message: '请输入红包标题' }],
                 })(<Input
-                  placeholder="任务名称"
+                  placeholder="红包标题"
                 />)}
               </FormItem>
             </Col>
@@ -439,15 +439,15 @@ class UpdateForm extends PureComponent {
           ] : []
         }
       >
-        <Card title="企业基本信息">
+        <Card title="红包基本信息">
           <Row type="flex">
             <Col span={12} className={styles.setDistance}>
-              <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="任务名称">
+              <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="红包标题">
                 {form.getFieldDecorator('title', {
                   initialValue: title,
-                  rules: [{ required: true, message: '请输入任务名称' }],
+                  rules: [{ required: true, message: '请输入红包标题' }],
                 })(<Input
-                  placeholder="任务名称"
+                  placeholder="红包标题"
                 />)}
               </FormItem>
             </Col>
