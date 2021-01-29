@@ -47,7 +47,11 @@ class CreateForm extends React.Component {
       this.setState({
         appName,
       });
-      message.success(`${info.file.name}上传成功`);
+      if (info.file.response.status !== 1) {
+        message.error(info.file.response.message);
+      } else {
+        message.success(`${info.file.name}上传成功`);
+      }
     } else if (info.file.status === 'error') {
       message.error(`${info.file.name}上传失败`);
     }
@@ -171,8 +175,12 @@ class UpdateForm extends PureComponent {
 
       }
       if (info.file.status === 'done') {
-        handleAppName(info.file.response.data);
-        message.success(`${info.file.name}上传成功`);
+        if (info.file.response.status !== 1) {
+          message.error(info.file.response.message);
+        } else {
+          handleAppName(info.file.response.data);
+          message.success(`${info.file.name}上传成功`);
+        }
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name}上传失败`);
       }
