@@ -93,7 +93,7 @@ export const treeData = [
     path: './05942911891/appManagement',
     icon: 'dropbox',
     children: [
-      { title: 'app管理', key: '4-0', path: './05942911891/appManagement/management', name: 'appList', icon: 'dropbox' },
+      { title: 'app管理', key: '4-0', path: './05942911891/appManagement/appManagement', name: 'appList', icon: 'dropbox' },
     ],
   },
   {

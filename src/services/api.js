@@ -33,6 +33,27 @@ export async function uploadFiles(params) {
   });
 }
 
+//app管理列表
+export async function queryAppList(params) {
+  return request(`/api/appVersion/list`, {
+    method: 'POST',
+    body: {
+      ...params,
+    },
+  });
+}
+
+//新增&编辑app
+export async function saveApp(params) {
+  return request(`/api/appVersion/addOrEdit`, {
+    method: 'POST',
+    body: {
+      ...params,
+    },
+  });
+}
+
+
 
 export async function queryProjectNotice() {
   return request('/api/project/notice');
