@@ -93,7 +93,7 @@ class CreateForm extends React.Component {
   render() {
     const { current } = this.state;
     const { form, modalVisible, handleModalVisible, handleAdd, loading, value, updateType } = this.props;
-    console.dir(value);
+    // console.dir(value);
     const { activityName } = value;
     const paginationProps = {
       showQuickJumper: true,
