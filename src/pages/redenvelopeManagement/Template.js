@@ -104,7 +104,7 @@ class CreateForm extends React.Component {
       fileList,
 
     };
-    const controls = ['bold', 'italic', 'underline', 'text-color', 'separator', 'link', 'separator', 'media' ]
+    const controls = ['bold', 'italic', 'underline', 'text-color', 'separator', 'link', 'separator', 'media'];
 
     const okHandle = () => {
 
@@ -272,7 +272,7 @@ class CreateForm extends React.Component {
                     className={styles.myEditor}
                     controls={controls}
                     placeholder="请输入详细描述"
-                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                    contentStyle={{ height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
                   />,
                 )}
               </FormItem>
@@ -290,7 +290,7 @@ class CreateForm extends React.Component {
                     className={styles.myEditor}
                     controls={controls}
                     placeholder="请输入赠送方式介绍"
-                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                    contentStyle={{ height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
                   />,
                 )}
               </FormItem>
@@ -308,7 +308,7 @@ class CreateForm extends React.Component {
                     className={styles.myEditor}
                     controls={controls}
                     placeholder="请输入发放方式介绍"
-                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                    contentStyle={{ height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
                   />,
                 )}
               </FormItem>
@@ -366,7 +366,7 @@ class UpdateForm extends PureComponent {
         }*/
     const { imageLoading, fileList } = this.state;
 
-    const controls = ['bold', 'italic', 'underline', 'text-color', 'separator', 'link', 'separator', 'media' ]
+    const controls = ['bold', 'italic', 'underline', 'text-color', 'separator', 'link', 'separator', 'media'];
 
     const handleUpload = (info) => {
       const formData = new FormData();
@@ -625,7 +625,7 @@ class UpdateForm extends PureComponent {
                     className={styles.myEditor}
                     controls={controls}
                     placeholder="请输入详细描述"
-                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                    contentStyle={{ height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
                   />,
                 )}
               </FormItem>
@@ -643,7 +643,7 @@ class UpdateForm extends PureComponent {
                     className={styles.myEditor}
                     controls={controls}
                     placeholder="请输入赠送方式介绍"
-                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                    contentStyle={{ height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
                   />,
                 )}
               </FormItem>
@@ -661,7 +661,7 @@ class UpdateForm extends PureComponent {
                     className={styles.myEditor}
                     controls={controls}
                     placeholder="请输入发放方式介绍"
-                    contentStyle={{height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)'}}
+                    contentStyle={{ height: 210, boxShadow: 'inset 0 1px 3px rgba(0,0,0,.1)' }}
                   />,
                 )}
               </FormItem>
@@ -851,6 +851,10 @@ class Template extends PureComponent {
     const { dispatch } = this.props;
     const params = { ...fields, id, image: nearestImage };
     const { params: { limit, page } } = this.state;
+    params.detailDescription = params.detailDescription.toHTML();
+    params.giveIntroduction = params.giveIntroduction.toHTML();
+    params.sendIntroduction = params.sendIntroduction.toHTML();
+
     dispatch({
       type: 'template/saveTemp',
       payload: params,
@@ -1004,9 +1008,9 @@ class Template extends PureComponent {
     } else {
       newParams.image = '';
     }
-    newParams.detailDescription=newParams.detailDescription.toHTML();
-    newParams.giveIntroduction=newParams.giveIntroduction.toHTML();
-    newParams.sendIntroduction=newParams.sendIntroduction.toHTML();
+    newParams.detailDescription = newParams.detailDescription.toHTML();
+    newParams.giveIntroduction = newParams.giveIntroduction.toHTML();
+    newParams.sendIntroduction = newParams.sendIntroduction.toHTML();
     dispatch({
       type: 'template/saveTemp',
       payload: newParams,
