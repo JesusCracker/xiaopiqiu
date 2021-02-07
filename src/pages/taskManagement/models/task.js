@@ -52,9 +52,14 @@ export default {
       };
     },
     saveMsgList(state, action) {
+      const initData={
+        id: 0,
+        title: '无',
+      }
       return {
         ...state,
-        msgList: action.payload.data,
+        // msgList:action.payload.data.concat(initData)
+        msgList:[initData,...action.payload.data]
       };
     },
     save(state, action) {

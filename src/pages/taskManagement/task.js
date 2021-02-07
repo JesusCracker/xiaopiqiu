@@ -57,7 +57,6 @@ class UpdateForm extends PureComponent {
 
     const { nodeLevel, nodeKey } = this.state;
     const tempList = msgList && msgList.length === 0 ? [] : msgList;
-
     // console.dir(currentRecord);
 
     const okHandle = () => {
@@ -76,7 +75,7 @@ class UpdateForm extends PureComponent {
       if (Array.isArray(data)) {
         return data.map(item => item.children
           ? {
-            disabled:true,
+            disabled: true,
             title: item.title,
             level: item.level,
             value: item.key,
@@ -212,7 +211,6 @@ class CreateForm extends React.Component {
 
     const tempList = msgList && msgList.length === 0 ? [] : msgList;
 
-
     const okHandle = () => {
       form.validateFields((err, fieldsValue) => {
         if (err) return;
@@ -232,7 +230,7 @@ class CreateForm extends React.Component {
       if (Array.isArray(data)) {
         return data.map(item => item.children
           ? {
-            disabled:true,
+            disabled: true,
             title: item.title,
             level: item.level,
             value: item.key,
@@ -251,13 +249,6 @@ class CreateForm extends React.Component {
       return [];
     };
     const tradeListTree = tradeData && tradeData.length === 0 ? [] : formateData(tradeData);
-    /*    tradeListTree.unshift({
-          title: '无',
-          value: 0,
-          key: 0,
-          level: 0,
-          nodeKey: 0,
-        });*/
 
     return (
       <Modal
@@ -360,9 +351,9 @@ class Task extends PureComponent {
             maxWidth: 150,
             overflow: 'hidden',
             whiteSpace: 'nowrap',
-            textOverflow:'ellipsis',
-            cursor:'pointer'
-          }
+            textOverflow: 'ellipsis',
+            cursor: 'pointer',
+          },
         }),
       },
       {
