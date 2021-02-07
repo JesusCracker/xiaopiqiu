@@ -211,7 +211,7 @@ class BasicLayout extends React.PureComponent {
     const currRouterData = this.matchParamsPath(pathname);
 
     if (!currRouterData) {
-      return '小皮球app-随时随时抢红包';
+      return '小皮球-在线管理你的积分，随时随地抢红包';
     }
     const message = formatMessage({
       id: currRouterData.locale || currRouterData.name,

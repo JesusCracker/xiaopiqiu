@@ -5,9 +5,9 @@ import Radium, { StyleRoot } from 'radium';
 
 import styles from './index.less';
 import Bmap from '../../utils/Bmap';
-import scar from '../../assets/PC/邀好友.png';
-import red from '../../assets/PC/领积分.png';
-import task from '../../assets/PC/抢红包.png';
+import scar from '../../assets/PC/pc-邀好友.png';
+import red from '../../assets/PC/pc-领积分.png';
+import task from '../../assets/PC/pc-抢红包.png';
 import android from '../../assets/PC/android.png';
 import 公众号 from '../../assets/PC/gzh.jpg';
 import 头条 from '../../assets/PC/tt.png';
