@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react';
 import { Layout, Row, Col, Carousel, message } from 'antd';
 import { bounce, fadeIn, fadeInLeft, fadeInRight } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
+import { Helmet } from 'react-helmet';
+import { connect } from 'dva';
+import { imgUrlPath } from '@/global';
 
 import styles from './index.less';
 import Bmap from '../../utils/Bmap';
@@ -12,6 +15,7 @@ import android from '../../assets/PC/android.png';
 import 公众号 from '../../assets/PC/gzh.jpg';
 import 头条 from '../../assets/PC/tt.png';
 import 微信客服 from '../../assets/PC/kf.png';
+import 微博 from '../../assets/PC/xpq_vlog.png';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -47,6 +51,10 @@ const style = {
   },
 };
 
+@connect(({ appDownload, loading }) => ({
+  appDownload,
+  loading: loading.models.appDownload,
+}))
 class PC extends PureComponent {
   constructor(props) {
     super(props);
@@ -55,6 +63,10 @@ class PC extends PureComponent {
       pos: null,
       dotPosition: 'right',
       index: 0,
+      defaultParams: {
+        page: 1,
+        limit: 10,
+      },
     };
     this.crousel = React.createRef();
   }
@@ -103,10 +115,40 @@ class PC extends PureComponent {
 
   };
 
+  download = () => {
+    const { dispatch } = this.props;
+    const { defaultParams } = this.state;
+    dispatch({
+      type: 'appDownload/app',
+      payload: defaultParams,
+    }).then(res => {
+      if (res.data && res.status === 1) {
+        if (res.data && res.data.length === 0) {
+          message.error('当前没有apk文件', 1);
+          return false;
+        }
+        message.success('准备下载...', 1, () => {
+          const path = imgUrlPath + res.data[0].apkSrc;
+          const form = document.createElement('form');
+          form.action = path;
+          document.getElementsByTagName('body')[0].appendChild(form);
+          form.submit();
+        });
+      } else {
+        message.error(res.message, 1);
+      }
+    });
+  };
+
   render() {
+
     const { pos, dotPosition } = this.state;
     return (
       <div onWheel={e => this.handleScroll(e)}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>小皮球-让您的积分更值钱</title>
+        </Helmet>
         <Carousel
           effect="fade"
           dotPosition={dotPosition}
@@ -129,13 +171,13 @@ class PC extends PureComponent {
                   <div className={styles.day}>
                     <StyleRoot>
                       <div className="test" style={style.fadeInLeft}>
-                        随时随地抢红包，领积分
+                        让您的积分更值钱
                       </div>
                     </StyleRoot>
                   </div>
                   <div className={styles.h} />
 
-                  <div className={`${styles.download}`}>
+                  <div className={`${styles.download}`} onClick={() => this.download()}>
                     <img src={android} alt="" />
                     <span> Android 下载</span>
                   </div>
@@ -215,8 +257,8 @@ class PC extends PureComponent {
                             <div className={styles.intro}>小皮球公众号</div>
                           </Col>
                           <Col span={12}>
-                            <img src={微信客服} alt="" className={styles.smImage} />
-                            <div className={styles.intro}>小皮球微信客服</div>
+                            <img src={微博} alt="" className={styles.smImage} />
+                            <div className={styles.intro}>小皮球微博</div>
                           </Col>
                         </Row>
                       </div>

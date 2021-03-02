@@ -52,6 +52,7 @@ class UpdateForm extends PureComponent {
       form,
       currentRecord,
       loading,
+      updateType,
       task: { msgList, tradeData },
     } = this.props;
 
@@ -167,14 +168,21 @@ class UpdateForm extends PureComponent {
         width={640}
         bodyStyle={{ padding: '32px 40px 48px' }}
         destroyOnClose
-        title="编辑菜单"
+        title={updateType && updateType === 2 ? '编辑菜单' : '查看菜单'}
         visible={updateModalVisible}
         onOk={okHandle}
-        onCancel={() => handleUpdateModalVisible(false)}
+        onCancel={() => handleUpdateModalVisible(false, currentRecord)}
         afterClose={() => handleUpdateModalVisible()}
         okText="确定"
         cancelText="取消"
         confirmLoading={loading}
+        footer={
+          // 设置footer为空，去掉 取消 确定默认按钮
+          updateType && updateType === 2 ? [
+            <Button key="back" onClick={() => handleUpdateModalVisible(false, currentRecord, updateType)}>取消</Button>,
+            <Button key="submit" type="primary" loading={loading} onClick={okHandle}>确定</Button>,
+          ] : []
+        }
       >
 
         {menuForm}
@@ -398,20 +406,35 @@ class Task extends PureComponent {
       {
         title: '操作',
         align: 'center',
-        render: (text, record) => (
-          <Wrapper>
-            <a onClick={() => this.handleUpdateModalVisible(true, record)}>编辑</a>
-            &nbsp;&nbsp;
-            <a
-              onClick={() => this.handleChangeStatusConfirm(record)}>{record.status && record.status === 1 ? '停用' : '启用'}</a>
-          </Wrapper>
-        ),
+        render: (text, record) => {
+          if (record.status === 2) {
+            return (
+              <Wrapper>
+                <a onClick={() => this.handleUpdateModalVisible(true, record, record.status)}>编辑</a>
+                &nbsp;&nbsp;
+                <a
+                  onClick={() => this.handleChangeStatusConfirm(record)}>{record.status && record.status === 1 ? '停用' : '启用'}
+                </a>
+              </Wrapper>
+            );
+          }
+          return (
+            <Wrapper>
+              <a onClick={() => this.handleUpdateModalVisible(true, record, record.status)}>查看</a>
+              &nbsp;&nbsp;
+              <a
+                onClick={() => this.handleChangeStatusConfirm(record)}>{record.status && record.status === 1 ? '停用' : '启用'}
+              </a>
+            </Wrapper>
+          );
+        },
       },
     ];
 
 
     this.state = {
       name: null,
+      updateType: null,
       modalVisible: false,
       updateModalVisible: false,
       updateFormValues: {},
@@ -528,12 +551,12 @@ class Task extends PureComponent {
     return '个人';
   };
 
-  renderTradeType = (tradeTypeName) => {
+  renderTradeType = (tradeTypeName) =>
     /*  if(tradeType===){
 
       }*/
-    return tradeTypeName;
-  };
+    tradeTypeName
+  ;
 
   handleAdd = (fields, form) => {
     const { dispatch } = this.props;
@@ -597,7 +620,7 @@ class Task extends PureComponent {
     message.error(content);
   };
 
-  handleUpdateModalVisible = (flag, record) => {
+  handleUpdateModalVisible = (flag, record,modalType) => {
     const { dispatch } = this.props;
     if (flag) {
       dispatch({
@@ -613,6 +636,7 @@ class Task extends PureComponent {
     this.setState({
       updateModalVisible: !!flag,
       updateFormValues: record || {},
+      updateType: modalType,
     });
   };
 
@@ -675,7 +699,7 @@ class Task extends PureComponent {
 
     const { task, loading } = this.props;
     const { taskList: { data, dataTotal } } = task;
-    const { params, modalVisible, updateModalVisible, updateFormValues } = this.state;
+    const { params, modalVisible, updateModalVisible, updateFormValues,updateType } = this.state;
 
     const parentMethods = {
       handleAdd: this.handleAdd,
@@ -722,6 +746,8 @@ class Task extends PureComponent {
             currentRecord={updateFormValues}
             updateModalVisible={updateModalVisible}
             loading={loading}
+            updateType={updateType}
+
           />
         ) : null}
 
