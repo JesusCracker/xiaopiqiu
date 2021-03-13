@@ -8,7 +8,7 @@ import { bounce, fadeIn, fadeInLeft, fadeInRight } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 import android from '@/assets/PC/android.png';
 import 公众号 from '@/assets/PC/gzh.jpg';
-import { Carousel, Col, Layout, message, Row } from 'antd';
+import { Col, Layout, message, Row } from 'antd';
 import { imgUrlPath } from '@/global';
 import task from '@/assets/PC/pc-抢红包.png';
 import red from '@/assets/PC/pc-领积分.png';
