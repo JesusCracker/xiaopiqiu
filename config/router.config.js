@@ -1,12 +1,9 @@
 export default [
-
   //forgot number be4 routePath;
   {
     path: '/be4index',
     component: '../layouts/UserLayout',
-    routes: [
-      { path: '/be4index', redirect: '/05942911891/login' },
-    ],
+    routes: [{ path: '/be4index', redirect: '/05942911891/login' }],
   },
   // login
   {
@@ -41,9 +38,7 @@ export default [
             path: '/05942911891/taskManagement/task',
             name: 'task',
             component: './taskManagement/Task',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
         ],
       },
@@ -60,9 +55,7 @@ export default [
             path: '/05942911891/system/userManagement',
             name: 'userList',
             component: './System/UserManagementList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             key: '5-1',
@@ -70,9 +63,7 @@ export default [
             path: '/05942911891/system/changePWD',
             name: 'changePWD',
             component: './System/ChangePWD',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
         ],
       },
@@ -85,9 +76,7 @@ export default [
             path: '/05942911891/appManagement/appManagement',
             name: 'appList',
             component: './appManagement/AppManagementList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
         ],
       },
@@ -100,35 +89,26 @@ export default [
             path: '/05942911891/redenvelopeManagement/setting',
             name: 'setting',
             component: './redenvelopeManagement/Setting',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/redenvelopeManagement/template',
             name: 'template',
             component: './redenvelopeManagement/Template',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/redenvelopeManagement/activity',
             name: 'activity',
             component: './redenvelopeManagement/Activity',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/redenvelopeManagement/statistics',
             name: 'statistics',
             component: './redenvelopeManagement/StatisticsList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
-
         ],
       },
       {
@@ -140,33 +120,25 @@ export default [
             path: '/05942911891/pointsManagement/setting',
             name: 'setting',
             component: './pointsManagement/Setting',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/pointsManagement/provide',
             name: 'provide',
             component: './pointsManagement/Provide',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/pointsManagement/trade',
             name: 'trade',
             component: './pointsManagement/Trade',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/pointsManagement/withdraw',
             name: 'withdraw',
             component: './pointsManagement/Withdraw',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
         ],
       },
@@ -179,33 +151,25 @@ export default [
             path: '/05942911891/userManagement/enterprise',
             name: 'enterprise',
             component: './userManagement/EnterpriseList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/userManagement/person',
             name: 'person',
             component: './userManagement/PersonList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/userManagement/blacklist',
             name: 'blacklist',
             component: './userManagement/BlackList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/userManagement/userStatistics',
             name: 'userStatistics',
             component: './userManagement/UserStatisticsList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
         ],
       },
@@ -218,9 +182,7 @@ export default [
             path: '/05942911891/publishManagement/contentManagement',
             name: 'contentManagement',
             component: './publishManagement/ContentManagementList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
         ],
       },
@@ -233,17 +195,13 @@ export default [
             path: '/05942911891/messageManagement/announcementList',
             name: 'announcementList',
             component: './messageManagement/AnnouncementList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
           {
             path: '/05942911891/messageManagement/messageList',
             name: 'messageList',
             component: './messageManagement/MessageList',
-            routes: [
-              {},
-            ],
+            routes: [{}],
           },
         ],
       },
@@ -259,7 +217,8 @@ export default [
     routes: [
       // { path: '/pc', redirect: '/pc/index' },
       // { path: '/pc/index', component: './PC/index' },
-      { path: '/', component: './PC/index' },
+      // { path: '/', component: './PC/index' },
+      { path: '/', component: './PC/other' },
     ],
   },
 ];
