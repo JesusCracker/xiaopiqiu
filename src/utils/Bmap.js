@@ -30,7 +30,7 @@ export default class extends Component {
     if (!this.mapLoaded) return;
     // console.log(nextProps.value, this.props.value)
     const { value } = nextProps;
-    if(value){
+    if (value) {
       const { point: position = { lng: undefined, lat: undefined } } = value;
       const { point: prePosition = { lng: undefined, lat: undefined } } = this.props.value || {};
       if (position.lng && position.lat && !prePosition.lng && !prePosition.lat) {
@@ -78,15 +78,14 @@ export default class extends Component {
     });
   };
 
-
-
-
   setCity = (city, zoom) => {
     this.map.setCenter(city);
     if (zoom) this.map.setZoom(zoom);
   };
 
   initMap = BMap => {
+    // GL版命名空间为BMapGL
+
     // this.defaultCenter = getPoint(116.404, 39.915);
     // this.mapContainer = this.mapContainer || this.mapContainerRef.current;
     const { value } = this.props;
@@ -95,25 +94,22 @@ export default class extends Component {
     // console.log(this.props)
 
     const map = new BMap.Map(this.mapContainer, { enableMapClick: false });
-    const marker = new BMap.Marker(new BMap.Point(104.076055,30.583239));
+    const marker = new BMap.Marker(new BMap.Point(104.071415, 30.575909));
     map.addOverlay(marker);
     if (Object.keys(map).length === 0) return;
-    map.enableScrollWheelZoom();
     const point = new BMap.Point(
-      (position && position.lng) || 104.076055,
-      (position && position.lat) || 30.583239
+      (position && position.lng) || 104.071415,
+      (position && position.lat) || 30.575909
     );
-    // console.log(point)
     map.centerAndZoom(point, 15);
     map.setDefaultCursor('pointer');
-    map.disableDragging();     //禁止拖拽
-    map.disableScrollWheelZoom();//禁止缩放
+    map.disableScrollWheelZoom();
+    map.disableDragging(); //禁止拖拽
+    map.disableScrollWheelZoom(); //禁止缩放
 
     // map.addControl(new BMap.OverviewMapControl({ isOpen: true, size: new BMap.Size(140, 110) }));
     // map.addControl(new BMap.NavigationControl({type: global.BMAP_NAVIGATION_CONTROL_ZOOM}));
     // map.addControl(new BMap.NavigationControl());
-
-    // console.log(value);
 
     // map.addEventListener('tilesloaded', ()=>{
     // });
@@ -124,7 +120,7 @@ export default class extends Component {
       const myCity = new BMap.LocalCity();
       myCity.get(result => {
         // console.log(result)
-        map.setCenter(result.name);
+        // map.setCenter(result.name);
       });
     }
     // map.addEventListener('click', this.onMapClick);
