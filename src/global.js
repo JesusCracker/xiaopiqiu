@@ -1,4 +1,4 @@
-export const imgUrlPath = 'http://www.xiaopiqiu.net/file_upload/';
+export const imgUrlPath = 'http://file.xiaopiqiu.net/';
 export const identImagePath = 'http://www.xiaopiqiu.net:8090';
 
 export const treeData = [
